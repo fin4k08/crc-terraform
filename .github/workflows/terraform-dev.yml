@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workfloww_dispatch:
 
 env:
   TF_VERSION: '1.8.4'
