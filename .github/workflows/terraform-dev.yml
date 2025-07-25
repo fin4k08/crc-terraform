@@ -34,14 +34,14 @@ jobs:
 
       - name: Terraform Init
         run: terraform init -backend-config="envs/dev/backend.config"
-        working-directory: crc-terraform
+        working-directory: .
 
       - name: Terraform Validate
         run: terraform validate
 
       - name: Terraform Plan
         run: terraform plan -var-file="envs/dev/terraform.tfvars" -out=tfplan.binary
-        working-directory: crc-terraform
+        working-directory: .
       
       - name: Upload Plan
         uses: actions/upload-artifact@v4
@@ -80,4 +80,4 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply tfplan.binary
-        working-directory: crc-terraform
+        working-directory: .
