@@ -1,5 +1,6 @@
 location                         = "uksouth"
 resource_group_name              = "crc-af-uks-001-rg"
+subscription_id                  = "3889e478-73e3-49e2-a2f8-b853342b44ba"
 storage_account_prefix           = "crcafuks001sto"
 frontdoor_profile_name           = "crc-af-fd-profile-dev"
 endpoint_name                    = "crc-af-fd-endpoint-dev"
