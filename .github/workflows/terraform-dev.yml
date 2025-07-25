@@ -36,7 +36,7 @@ jobs:
         run: terraform plan -var-file="envs/dev/terraform.tfvars" -out=tfplan.binary
       
       - name: Upload Plan
-        uses: actions/upload-srtifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: tfplan
           path: tfplan.binary
