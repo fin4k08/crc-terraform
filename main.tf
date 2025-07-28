@@ -56,16 +56,32 @@ resource "time_sleep" "wait_for_dns" {
   create_duration = "90s" # or "2m", "1m30s", etc.
 }
 
-module "frontdoor_custom_domain" {
+# module "frontdoor_custom_domain" {
+#   source = "git::https://github.com/fin4k08/andy-terraform-modules.git//azure/frontdoor_custom_domain?ref=main"
+
+#   name             = var.frontdoor_custom_domain_name
+#   profile_id       = module.frontdoor.profile_id
+#   host_name        = var.frontdoor_custom_domain_hostname
+#   certificate_type = "ManagedCertificate"
+
+#   depends_on = [time_sleep.wait_for_dns]
+# }
+
+module "afd_public_route" {
   source = "git::https://github.com/fin4k08/andy-terraform-modules.git//azure/frontdoor_custom_domain?ref=main"
 
-  name             = var.frontdoor_custom_domain_name
-  profile_id       = module.frontdoor.profile_id
-  host_name        = var.frontdoor_custom_domain_hostname
-  certificate_type = "ManagedCertificate"
+  profile_id             = module.frontdoor.profile_id
+  endpoint_id            = module.frontdoor.endpoint_id
+  origin_group_id        = module.frontdoor.origin_group_id
+  origin_ids             = module.frontdoor.origin_ids
 
+  route_name             = "${var.endpoint_name}-route"
+  host_name = var.frontdoor_custom_domain_hostname
+
+  
   depends_on = [time_sleep.wait_for_dns]
 }
+
 
 module "cosmos_db" {
   source = "git::https://github.com/fin4k08/andy-terraform-modules.git//azure/cosmosdb?ref=main"
