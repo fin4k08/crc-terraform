@@ -18,10 +18,10 @@ app_service_plan_name            = "crc-func-plan"
 function_storage_account_prefix  = "crcfunctsto"
 key_vault_name                   = "crc-af-dev-kv"
 app_settings_secrets = {
-  COSMOS_DB_ENDPOINT  = "COSMOS_DB_ENDPOINT"
-  COSMOS_DB_KEY       = "COSMOS_DB_KEY"
-  COSMOS_DB_DATABASE  = "COSMOS_DB_DATABASE"
-  COSMOS_DB_CONTAINER = "COSMOS_DB_CONTAINER"
+  COSMOS_DB_ENDPOINT  = "COSMOS-DB-ENDPOINT"
+  COSMOS_DB_KEY       = "COSMOS-DB-KEY"
+  COSMOS_DB_DATABASE  = "COSMOS-DB-DATABASE"
+  COSMOS_DB_CONTAINER = "COSMOS-DB-CONTAINER"
 }
 
 tags = {
